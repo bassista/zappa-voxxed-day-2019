@@ -22,7 +22,7 @@ def resize(event, context):
             im.thumbnail(size)
             im.save(outfile, "JPEG")
             im.close()
-            save_to_s3(outfile, S3_BUCKET_NAME, test.jpg)
+            save_to_s3(outfile, S3_BUCKET_NAME, local_path)
         except Exception as e:
             print e
 
