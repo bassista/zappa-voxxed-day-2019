@@ -7,8 +7,8 @@ app = Flask(__name__)
 def index():
     return "Hello Voxxed people!", 200
 
-@app.route('/hello/<name>')
-@app.route('/hello/')
+@app.route('/name/<name>')
+@app.route('/name/')
 def custom_hello(name=None):
     if name is None:
         return "Tell me your name", 200
