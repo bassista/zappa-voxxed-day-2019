@@ -1,18 +1,16 @@
 {
-  "dev": {
+  "hello": {
     "app_function": "hello_voxxed.app",
-    "profile_name": null,
     "aws_region": "eu-west-1",
-    "project_name": "zappa-voxxed-da",
+    "project_name": "voxxed-day-hello",
     "runtime": "python2.7",
     "s3_bucket": "zappa-lambda-bucket-ireland"
   },
   "upload": {
     "app_function": "upload.app",
-    "profile_name": null,
     "manage_roles": true,
     "aws_region": "eu-west-1",
-    "project_name": "zappa-voxxed-da",
+    "project_name": "voxxed-day-hello",
     "runtime": "python2.7",
     "keep_warm": false,
     "log_level": "INFO",
