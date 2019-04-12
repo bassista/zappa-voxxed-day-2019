@@ -73,9 +73,9 @@ def upload_file():
 
 @app.route('/gallery/')
 @app.route('/gallery')
-def custom_hello(name=None):
+def gallery():
     conn = client('s3')
-    for key in conn.list_objects(Bucket=S3_BUCKET_NAME)['Contents']:
+    for key in conn.list_objects(Bucket=S3_BUCKET_NAME_THUMBNAIL)['Contents']:
         print(key['Key'])
     return render_template('gallery.html')
 
