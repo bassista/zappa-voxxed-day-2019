@@ -17,7 +17,7 @@
     "s3_bucket": "zappa-lambda-bucket-ireland",
     "events": [
       {
-        "function": "resize.resize",
+        "function": "upload.resize",
         "event_source": {
           "arn": "arn:aws:s3:::zappa-lambda-bucket-ireland",
           "events": [
