@@ -63,7 +63,7 @@ def upload_file():
              print "ok"
              filename = secure_filename(file.filename)
              file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-             save_to_s3(os.path.join(app.config['UPLOAD_FOLDER'], filename), S3_BUCKET_NAME, file.filename)
+             save_to_s3(os.path.join("thumbnail-", app.config['UPLOAD_FOLDER'], filename), S3_BUCKET_NAME, file.filename)
              flash('File(s) successfully uploaded')
              return redirect('/upload')
     except Exception as e:
@@ -74,10 +74,12 @@ def upload_file():
 @app.route('/gallery/')
 @app.route('/gallery')
 def gallery():
-    conn = client('s3')
+    pictures=[]
+    conn = boto3.client('s3')
     for key in conn.list_objects(Bucket=S3_BUCKET_NAME_THUMBNAIL)['Contents']:
         print(key['Key'])
-    return render_template('gallery.html')
+        pictures.append(key['Key'])
+    return render_template('gallery.html', pictures=pictures, bucket_name=S3_BUCKET_NAME_THUMBNAIL)
 
 if __name__ == "__main__":
     app.run(port=8080, host='0.0.0.0')

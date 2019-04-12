@@ -40,6 +40,11 @@
         <div>
             <img src="picture-test.jpg" alt="">
         </div>
+       {% for pic in pictures %}
+        <div>
+            <img src="https://s3-eu-west-1.amazonaws.com/{{bucket_name}}/{{pic}}" alt="">
+        </div>
+       {% endfor %}
     </div><!-- End gallery -->
 
 </body>
