@@ -1,0 +1,32 @@
+{
+  "dev": {
+    "app_function": "hello_voxxed.app",
+    "profile_name": null,
+    "aws_region": "eu-west-1",
+    "project_name": "zappa-voxxed-da",
+    "runtime": "python2.7",
+    "s3_bucket": "zappa-lambda-bucket-ireland"
+  },
+  "upload": {
+    "app_function": "upload.app",
+    "profile_name": null,
+    "manage_roles": true,
+    "aws_region": "eu-west-1",
+    "project_name": "zappa-voxxed-da",
+    "runtime": "python2.7",
+    "keep_warm": false,
+    "log_level": "INFO",
+    "s3_bucket": "zappa-lambda-bucket-ireland",
+    "events": [
+      {
+        "function": "resize.resize",
+        "event_source": {
+          "arn": "arn:aws:s3:::zappa-lambda-bucket-ireland",
+          "events": [
+            "s3:ObjectCreated:*"
+          ]
+        }
+      }
+    ]
+  }
+}
