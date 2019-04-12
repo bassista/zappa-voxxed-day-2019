@@ -4,9 +4,12 @@ from werkzeug.utils import secure_filename
 import boto3
 from PIL import Image
 
+# Global ariables
 UPLOAD_FOLDER = '/tmp'
 
 FUNC_NAME='upload'
+
+size = 128, 128
 
 app = Flask(__name__)
 app.secret_key = "secret key"
@@ -17,7 +20,9 @@ S3_BUCKET_NAME="zappa-lambda-bucket-ireland"
 S3_BUCKET_NAME_THUMBNAIL="zappa-lambda-bucket-ireland-thumb"
 
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg'])
+##
 
+## Utility function
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
@@ -42,6 +47,10 @@ def resize(event, context):
             save_to_s3(outfile, S3_BUCKET_NAME_THUMBNAIL, key)
         except Exception as e:
             print e
+##
+
+
+# Lambda Function
 
 @app.route('/')
 def upload_form():
@@ -81,6 +90,7 @@ def gallery():
         print(key['Key'])
         pictures.append(key['Key'])
     return render_template('gallery.html', pictures=pictures, bucket_name=S3_BUCKET_NAME_THUMBNAIL)
+#
 
 if __name__ == "__main__":
     app.run(port=8080, host='0.0.0.0')
