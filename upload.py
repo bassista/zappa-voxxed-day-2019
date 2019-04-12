@@ -5,7 +5,7 @@ import boto3
 
 UPLOAD_FOLDER = '/tmp'
 
-FUNC_NAME=upload
+FUNC_NAME='upload'
 
 app = Flask(__name__)
 app.secret_key = "secret key"
