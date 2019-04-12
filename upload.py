@@ -2,6 +2,7 @@ import os
 from flask import Flask, flash, request, redirect, render_template
 from werkzeug.utils import secure_filename
 import boto3
+from PIL import Image
 
 UPLOAD_FOLDER = '/tmp'
 
