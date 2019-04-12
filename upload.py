@@ -5,6 +5,8 @@ import boto3
 
 UPLOAD_FOLDER = '/tmp'
 
+FUNC_NAME=upload
+
 app = Flask(__name__)
 app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
@@ -38,11 +40,11 @@ def upload_file():
              file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
              save_to_s3(open(os.path.join(app.config['UPLOAD_FOLDER'], filename)), S3_BUCKET_NAME, file.filename)
              flash('File(s) successfully uploaded')
-             return redirect('/')
+             return redirect('/' + FUNC_NAME)
     except Exception as e:
         flash('Error in uploading file')
         print e
-        return redirect('/')
+        return redirect('/' + FUNC_NAME)
 
 def save_to_s3(binary_data, bucket_name, key_name):
     s3 = boto3.resource('s3')
