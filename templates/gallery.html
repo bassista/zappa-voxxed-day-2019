@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<!-- Sample CSS HTML thumbnail gallery by Alan Simpson -->
+<!-- More goodies available from http://AlanSimpson.me and https://docs.com/learnhtml-club -->
+<html>
+<head>
+    <title>Sample Gallery</title>
+    <style type="text/css">
+        /* Entire gallery */
+        .gallery {
+            position: relative;
+        }
+            /* Smaller divs with two img tags each */
+            .gallery div {
+                padding: 2px;
+                width: 120px;
+            }
+                /* First image in each smaller div */
+                .gallery div img:nth-child(1) {
+                    width: 100px;
+                }
+                /* Second image in each smaller div */
+                .gallery div img:nth-child(2) {
+                    position: absolute;
+                    top: 10px;
+                    left: 120px;
+                    z-index: 10;
+                    visibility: hidden;
+                }
+                /* Hover on any smaller div */
+                .gallery div:hover img:nth-child(2) {
+                    visibility: visible;
+                }
+    </style>
+</head>
+<body>
+    <h1>Sample gallery</h1>
+    <p>Point to or tap any small image to see a larger version.</p>
+    <div class="gallery">
+    <!-- Put two of each image in its own div inside the gallery div -->
+        <div>
+            <img src="picture-test.jpg" alt="">
+        </div>
+    </div><!-- End gallery -->
+
+</body>
+</html>
