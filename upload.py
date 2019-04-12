@@ -10,7 +10,7 @@ app.secret_key = "secret key"
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
-S3_BUCKET_NAME="zappa-lambda-bucket"
+S3_BUCKET_NAME="zappa-lambda-bucket-ireland"
 
 ALLOWED_EXTENSIONS = set(['jpg', 'jpeg'])
 
